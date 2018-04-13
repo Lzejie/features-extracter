@@ -89,8 +89,8 @@ class InformationGain(object):
 
             if sort_by_count:
                 new_ret = []
-                for each in ret:
-                    new_ret.append((each[0], each[1], self.labels_words_dict[label][each[0]]))
+                for one in ret:
+                    new_ret.append((one[0], one[1], self.labels_words_dict[label][one[0]]))
                 return sorted(new_ret, key=lambda x: -x[-1])
             else:
                 return ret
