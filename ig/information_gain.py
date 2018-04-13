@@ -53,10 +53,13 @@ class InformationGain(object):
         :param x: 用空格隔开的词列表的列表
         :param y: X每一项的类别
         """
-        cv = CountVectorizer(max_df=0.95,
-                             min_df=2,
-                             max_features=100000,
-                             stop_words='english')
+        cv = CountVectorizer(
+            max_df=0.95,
+            min_df=1,
+            max_features=100000,
+            # 抽取规则，默认是只抽取两个字以上的词
+            token_pattern=r'(?u)\b\w+\b',
+        )
         self.X_vec = cv.fit_transform(x)
         res = dict(zip(
             cv.get_feature_names(),
@@ -91,3 +94,28 @@ class InformationGain(object):
                 return sorted(new_ret, key=lambda x: -x[-1])
             else:
                 return ret
+
+
+if __name__ == '__main__':
+    sentences = [
+        u'我想吃红烧牛肉',
+        u'我想吃牛肉拉面',
+        u'我想要去旅游',
+        u'我旅游去的大理了',
+        u'那个牛肉挺好吃的',
+        u'下次去玩想去海南'
+    ]
+
+    labels = [
+        u'饮食',
+        u'饮食',
+        u'旅行',
+        u'旅行',
+        u'饮食',
+        u'旅行'
+    ]
+
+    ig = InformationGain(sentences, labels)
+
+    for each in ig.get_top(10):
+        print each[0], each[1]
