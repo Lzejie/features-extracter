@@ -118,4 +118,4 @@ if __name__ == '__main__':
     ig = InformationGain(sentences, labels)
 
     for each in ig.get_top(10):
-        print each[0], each[1]
+        print (each[0], each[1])
