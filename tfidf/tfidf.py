@@ -79,16 +79,20 @@ class TfIdf(object):
 
     def get_sentence_key_words(self, sentence, top_n=3):
         '''
-        获取句子词频
-
-        :param sentence:
-        :param top_n:
-        :return:
+        获取句子关键词
+        :param sentence: 待抽取的文本
+        :param top_n: 抽取top_n个关键词
+        :return: 返回一个列表，每一项分别为(词, 词权重)
         '''
         ret = self.transform(sentence)
         return sorted(ret, key=lambda x: (-x[1], x[0]))[:top_n]
 
     def transform(self, sentence):
+        '''
+        获取句子每个词的权重
+        :param sentence: 待获取文本
+        :return: 返回一个列表，每一项分别为(词, 词权重)
+        '''
         words_list = list(self.cutter(sentence))
         common_corpus = self.common_dictionary.doc2bow(words_list)
         words_tfidf_value = self.tfidf[common_corpus]
