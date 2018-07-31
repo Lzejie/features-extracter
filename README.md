@@ -8,7 +8,7 @@
 利用信息增益的方式进行特征抽取
 
 ```python
-from extracter.ig import InformationGain
+from extracter import InformationGain
 
 sentences = [
     '我想吃红烧牛肉',
@@ -37,7 +37,7 @@ for each in ig.get_top(10):
 ### TfIdf
 利用TfIdf的方式进行特征抽取
 ```python
-from extracter.tfidf import TfIdf
+from extracter import TfIdf
 
 sentences = [
     '我想吃红烧牛肉',

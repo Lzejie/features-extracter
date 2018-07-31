@@ -4,3 +4,6 @@
 # @Site    :
 # @File    : __init__.py.py
 # @Software: PyCharm Community Edition
+
+from extracter.ig import InformationGain
+from extracter.tfidf import TfIdf

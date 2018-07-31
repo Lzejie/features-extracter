@@ -14,6 +14,18 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 class InformationGain(object):
+    '''
+    该类适用于文本关键词抽取或同性质特征抽取任务
+    该类使用信息增益的方式取关键词
+
+    >>> sentences = ['我想吃红烧牛肉', '我想吃牛肉拉面', '我想要去旅游', '我旅游去的大理了', '那个牛肉挺好吃的', '下次去玩想去海南']
+    >>> labels = ['饮食', '饮食', '旅行', '旅行', '饮食', '旅行']
+
+    >>> ig = InformationGain(sentences, labels)
+    >>> ret = ig.get_key_words(3)
+    >>> ret
+    [('去', 0.6931471805599452), ('牛肉', 0.6931471805599452), ('吃', 0.3182570841474064)]
+    '''
 
     def __init__(self, sentences, labels, cutter=jieba.cut):
         """
@@ -97,25 +109,27 @@ class InformationGain(object):
 
 
 if __name__ == '__main__':
-    sentences = [
-        u'我想吃红烧牛肉',
-        u'我想吃牛肉拉面',
-        u'我想要去旅游',
-        u'我旅游去的大理了',
-        u'那个牛肉挺好吃的',
-        u'下次去玩想去海南'
-    ]
-
-    labels = [
-        u'饮食',
-        u'饮食',
-        u'旅行',
-        u'旅行',
-        u'饮食',
-        u'旅行'
-    ]
-
-    ig = InformationGain(sentences, labels)
-
-    for each in ig.get_key_words(10):
-        print (each[0], each[1])
+    import doctest
+    doctest.testmod()
+    # sentences = [
+    #     u'我想吃红烧牛肉',
+    #     u'我想吃牛肉拉面',
+    #     u'我想要去旅游',
+    #     u'我旅游去的大理了',
+    #     u'那个牛肉挺好吃的',
+    #     u'下次去玩想去海南'
+    # ]
+    #
+    # labels = [
+    #     u'饮食',
+    #     u'饮食',
+    #     u'旅行',
+    #     u'旅行',
+    #     u'饮食',
+    #     u'旅行'
+    # ]
+    #
+    # ig = InformationGain(sentences, labels)
+    #
+    # for each in ig.get_key_words(10):
+    #     print (each[0], each[1])
