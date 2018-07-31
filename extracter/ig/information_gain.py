@@ -67,7 +67,7 @@ class InformationGain(object):
         ))
         self.ig_score = res
 
-    def get_top(self, top_n=100, label=None, sort_by_count=False):
+    def get_key_words(self, top_n=100, label=None, sort_by_count=False):
         """
         获取信息增益最高的词
         :param top_n: 返回前n个，默认为100
@@ -117,5 +117,5 @@ if __name__ == '__main__':
 
     ig = InformationGain(sentences, labels)
 
-    for each in ig.get_top(10):
+    for each in ig.get_key_words(10):
         print (each[0], each[1])

@@ -4,3 +4,5 @@
 # @Site    :
 # @File    : __init__.py.py
 # @Software: PyCharm Community Edition
+
+from extracter.tfidf.tfidf import TfIdf

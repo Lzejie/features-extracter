@@ -4,3 +4,5 @@
 # @Site    :
 # @File    : __init__.py.py
 # @Software: PyCharm Community Edition
+
+from extracter.ig.information_gain import InformationGain
