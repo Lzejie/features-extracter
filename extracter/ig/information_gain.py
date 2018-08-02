@@ -111,25 +111,3 @@ class InformationGain(object):
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-    # sentences = [
-    #     u'我想吃红烧牛肉',
-    #     u'我想吃牛肉拉面',
-    #     u'我想要去旅游',
-    #     u'我旅游去的大理了',
-    #     u'那个牛肉挺好吃的',
-    #     u'下次去玩想去海南'
-    # ]
-    #
-    # labels = [
-    #     u'饮食',
-    #     u'饮食',
-    #     u'旅行',
-    #     u'旅行',
-    #     u'饮食',
-    #     u'旅行'
-    # ]
-    #
-    # ig = InformationGain(sentences, labels)
-    #
-    # for each in ig.get_key_words(10):
-    #     print (each[0], each[1])
