@@ -84,19 +84,21 @@ class TfIdf(object):
         :param top_n: 抽取top_n个关键词
         :return: 返回一个列表，每一项分别为(词, 词权重)
         '''
-        ret = self.transform(sentence)
+        ret = self.transform(sentence, False)
         return sorted(ret, key=lambda x: (-x[1], x[0]))[:top_n]
 
-    def transform(self, sentence):
+    def transform(self, sentence, return_word=True):
         '''
         获取句子每个词的权重
         :param sentence: 待获取文本
+        :param return_word: 返回的词权重是否使用词。True则返回词，False则返回index
         :return: 返回一个列表，每一项分别为(词, 词权重)
         '''
         words_list = list(self.cutter(sentence))
         common_corpus = self.common_dictionary.doc2bow(words_list)
         words_tfidf_value = self.tfidf[common_corpus]
-        return words_tfidf_value
+        return [(self.common_dictionary[item[0]], item[1]) for item in words_tfidf_value] \
+            if return_word else words_tfidf_value
 
 
 if __name__ == '__main__':
